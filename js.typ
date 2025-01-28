@@ -97,8 +97,13 @@
       h1 = "第" + str(n) + "章"
       h1state.update(h1 + "  " + it.body)
       par(text(2 * fontsize, h1))
-      par(first-line-indent: 0em, spacing: 1.5 * fontsize, text(size: 2.5 * fontsize, it.body))
-      v(3 * baselineskip)
+      par(
+        first-line-indent: 0em,
+        spacing: 2.5 * fontsize,
+        leading: 1.3 * fontsize,
+        text(size: 2.5 * fontsize, it.body)
+      )
+      v(2 * baselineskip)
     } else {
       v(2 * baselineskip, weak: true)
       text(1.4 * fontsize, it)
@@ -111,8 +116,13 @@
       let n = counter(heading).get().at(0, default: 0)
       let h1 = ""
       h1state.update(it.body)
-      par(first-line-indent: 0em, spacing: 1.5 * fontsize, text(size: 2.5 * fontsize, it.body))
-      v(3 * baselineskip)
+      par(
+        first-line-indent: 0em,
+        spacing: 2.5 * fontsize,
+        leading: 1.3 * fontsize,
+        text(size: 2.5 * fontsize, it.body)
+      )
+      v(2 * baselineskip)
     } else {
       text(1.4 * fontsize, it)
     }
@@ -132,8 +142,10 @@
     spacing: 1.5 * baselineskip - 0.88em, // 段落間
     leading: 0.8 * baselineskip - 0.88em, // 行間
   )
+  set table(stroke: 0.4pt)
   show table: set text(top-edge: 0.76em)
   set footnote.entry(indent: 1.6em)
+  show figure.where(kind: table): set figure.caption(position: top)
   // finally
   body
 }
