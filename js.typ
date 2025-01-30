@@ -131,7 +131,6 @@
     if book { text(1.4 * fontsize, it) } else { text(1.2 * fontsize, it) }
   }
   set list(indent: 1.2em)
-  show emph: set text(font: sansfont)
   show strong: set text(font: sansfont, weight: 450)
   set quote(block: true)
   show quote: set pad(left: 2em)
