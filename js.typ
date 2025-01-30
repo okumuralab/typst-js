@@ -133,9 +133,14 @@
   set list(indent: 1.2em)
   show strong: set text(font: sansfont, weight: 450)
   set quote(block: true)
-  show quote: set pad(left: 2em)
+  show quote.where(block: true): set pad(left: 2em)
+  show quote.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
   show list: set block(spacing: 1.5 * baselineskip - 0.88em)
   show enum: set block(spacing: 1.5 * baselineskip - 0.88em)
+  set terms(indent: 2em)
+  set enum(indent: 1.2em)
+  set list(indent: 1.7em)
+  show terms: set block(spacing: 1.5 * baselineskip - 0.88em)
   show raw.where(block: true): set par(
     justify: false,
     spacing: 1.5 * baselineskip - 0.88em, // 段落間
