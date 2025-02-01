@@ -137,9 +137,9 @@
   show quote.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
   show list: set block(spacing: 1.5 * baselineskip - 0.88em)
   show enum: set block(spacing: 1.5 * baselineskip - 0.88em)
-  set terms(indent: 2em)
-  set enum(indent: 1.2em)
-  set list(indent: 1.7em)
+  set terms(indent: 2em, separator: h(1em, weak: true))
+  set enum(indent: 0.722em)
+  set list(indent: 0.722em)
   show terms: set block(spacing: 1.5 * baselineskip - 0.88em)
   show raw.where(block: true): set par(
     justify: false,
