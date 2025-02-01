@@ -209,7 +209,7 @@
 #let maketitle(
   title: "",
   authors: "",
-  date: datetime.today().display("[year]年[month repr:numerical padding:none]月[day]日"),
+  date: datetime.today().display("[year]年[month repr:numerical padding:none]月[day padding:none]日"),
   abstract: [],
   keywords: (),
 ) = {
