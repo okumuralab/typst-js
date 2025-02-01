@@ -170,9 +170,18 @@
 #let TeX = box[T#h(-0.2em)#text(baseline: 0.2em)[E]#h(-0.1em)X]
 #let LaTeX = box[L#h(-0.3em)#text(size: 0.7em, baseline: -0.3em)[A]#h(-0.1em)#TeX]
 
+#let kintou(width, s) = box(width: width, s.text.clusters().join(h(1fr)))
+
 #let ruby(yomi, kanji) = box[
-  #kanji
-  #place(top + center, dy: -0.5em, text(0.5em, yomi))
+  #context {
+    let w = measure(yomi).width / 2
+    let x = measure(kanji).width
+    if w < x { w = x }
+    box(width: w, h(1fr) + kanji + h(1fr))
+    place(top + center, dy: -0.5em,
+          box(width: w,
+              text(0.5em, h(1fr) + yomi.text.clusters().join(h(2fr)) + h(1fr))))
+  }
 ]
 
 #let boxtable(x) = {
