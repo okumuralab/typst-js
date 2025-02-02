@@ -8,7 +8,7 @@
   fontsize: 10pt,
   baselineskip: auto,
   textwidth: auto,
-  lines_per_page: auto,
+  lines-per-page: auto,
   book: false,
   cols: 1,
   body
@@ -26,11 +26,11 @@
   }
   if baselineskip == auto { baselineskip = 1.73 * fontsize }
   let xmargin = (paperwidth - textwidth) / 2
-  let ymargin = if lines_per_page == auto {
+  let ymargin = if lines-per-page == auto {
     (paperheight - (int((0.83 * paperheight - fontsize) / baselineskip)
                     * baselineskip + fontsize)) / 2
   } else {
-    (paperheight - (baselineskip * (lines_per_page - 1) + fontsize)) / 2
+    (paperheight - (baselineskip * (lines-per-page - 1) + fontsize)) / 2
   }
   let h1state = state("h1state")
   set columns(gutter: 2em)

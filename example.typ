@@ -12,7 +12,7 @@
   fontsize: 10pt,
   baselineskip: auto,
   textwidth: auto,
-  lines_per_page: auto,
+  lines-per-page: auto,
   book: false, // or true
   cols: 1, // or 2, 3, ...
 )
