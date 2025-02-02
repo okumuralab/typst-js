@@ -141,6 +141,7 @@
   set enum(indent: 0.722em)
   set list(indent: 0.722em)
   show terms: set block(spacing: 1.5 * baselineskip - 0.88em)
+  show raw.where(block: true): set block(width: 100%, fill: luma(240), inset: 1em)
   show raw.where(block: true): set par(
     justify: false,
     spacing: 1.5 * baselineskip - 0.88em, // 段落間
