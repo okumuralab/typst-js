@@ -29,6 +29,8 @@
   ]
 )
 
+#show raw.where(block: true): set block(width: 100%, fill: luma(240), inset: 1em)
+
 = これは何？
 
 Typst日本語用テンプレートです。p#LaTeX のjsarticle/jsbook相当品のつもりです。簡単なマクロもいくつか含めています。例：
