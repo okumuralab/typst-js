@@ -42,11 +42,12 @@
       bottom: if book { ymargin - 0.5 * baselineskip } else { ymargin },
     ),
     columns: cols,
-    numbering: if book { none } else { "1" },
+    numbering: "1",
+    footer: if book { none } else { auto },
     header:
       if not book { auto } else {
         context {
-          let p = here().page()  // page number
+          let p = here().page()  // physical page number
           let h1 = heading.where(level: 1)
           let h1p = query(h1).map(it => it.location().page())
           if p > 1 and not p in h1p {
@@ -60,9 +61,9 @@
                 stack(
                   spacing: 0.2em,
                   if h2last.numbering == none {
-                    [ #h2last.body #h(1fr) #str(p) ]
+                    [ #h2last.body #h(1fr) #counter(page).display() ]
                   } else {
-                    [ #{c.at(0)}.#{c.at(1)}#h(1em)#h2last.body #h(1fr) #str(p) ]
+                    [ #{c.at(0)}.#{c.at(1)}#h(1em)#h2last.body #h(1fr) #counter(page).display() ]
                   },
                   line(stroke: 0.4pt, length: 100%),
                 )
@@ -76,9 +77,9 @@
                 stack(
                   spacing: 0.2em,
                   if h1last.numbering == none {
-                    [ #str(p) #h(1fr) #h1last.body ]
+                    [ #counter(page).display() #h(1fr) #h1last.body ]
                   } else {
-                    [ #str(p) #h(1fr) 第#{c.at(0)}章#h(1em)#h1last.body ]
+                    [ #counter(page).display() #h(1fr) 第#{c.at(0)}章#h(1em)#h1last.body ]
                   },
                   line(stroke: 0.4pt, length: 100%),
                 )
@@ -113,24 +114,10 @@
     if book {
       pagebreak(weak: true, to: "odd")
       v(2 * baselineskip)
-      let n = counter(heading).get().at(0, default: 0)
-      par(text(2 * fontsize, "第" + str(n) + "章"))
-      par(
-        first-line-indent: 0em,
-        spacing: 2.5 * fontsize,
-        leading: 1.3 * fontsize,
-        text(size: 2.5 * fontsize, it.body)
-      )
-      v(2 * baselineskip)
-    } else {
-      v(2 * baselineskip, weak: true)
-      text(1.4 * fontsize, it)
-    }
-  }
-  show heading.where(level: 1, numbering: none): it => {
-    if book {
-      pagebreak(weak: true, to: "odd")
-      v(2 * baselineskip)
+      if it.numbering != none {
+        let n = counter(heading).get().at(0, default: 0)
+        par(text(2 * fontsize, "第" + str(n) + "章"))
+      }
       par(
         first-line-indent: 0em,
         spacing: 2.5 * fontsize,
@@ -144,7 +131,6 @@
     }
   }
   show heading.where(level: 2): it => {
-    // if book { text(1.4 * fontsize, it) } else { text(1.2 * fontsize, it) }
     text(if book { 1.4 } else { 1.2 } * fontsize, it)
   }
   set list(indent: 1.2em)
