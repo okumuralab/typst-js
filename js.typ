@@ -47,6 +47,9 @@
     header:
       if not book { auto } else {
         context {
+          let n = if page.numbering == none { "" } else {
+            counter(page).display(page.numbering)  // logical page number
+          }
           let p = here().page()  // physical page number
           let h1 = heading.where(level: 1)
           let h1p = query(h1).map(it => it.location().page())
@@ -61,9 +64,9 @@
                 stack(
                   spacing: 0.2em,
                   if h2last.numbering == none {
-                    [ #h2last.body #h(1fr) #counter(page).display() ]
+                    [ #h2last.body #h(1fr) #n ]
                   } else {
-                    [ #{c.at(0)}.#{c.at(1)}#h(1em)#h2last.body #h(1fr) #counter(page).display() ]
+                    [ #{c.at(0)}.#{c.at(1)}#h(1em)#h2last.body #h(1fr) #n ]
                   },
                   line(stroke: 0.4pt, length: 100%),
                 )
@@ -77,9 +80,9 @@
                 stack(
                   spacing: 0.2em,
                   if h1last.numbering == none {
-                    [ #counter(page).display() #h(1fr) #h1last.body ]
+                    [ #n #h(1fr) #h1last.body ]
                   } else {
-                    [ #counter(page).display() #h(1fr) 第#{c.at(0)}章#h(1em)#h1last.body ]
+                    [ #n #h(1fr) 第#{c.at(0)}章#h(1em)#h1last.body ]
                   },
                   line(stroke: 0.4pt, length: 100%),
                 )
@@ -115,8 +118,8 @@
       pagebreak(weak: true, to: "odd")
       v(2 * baselineskip)
       if it.numbering != none {
-        let n = counter(heading).get().at(0, default: 0)
-        par(text(2 * fontsize, "第" + str(n) + "章"))
+        let h = counter(heading).get().at(0, default: 0)
+        par(text(2 * fontsize, "第" + str(h) + "章"))
       }
       par(
         first-line-indent: 0em,

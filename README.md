@@ -13,3 +13,21 @@ typst compile example.typ
 `#ruby[よみ][親文字]` などの定義も含めました。
 
 [2025-02-07] オプション `book: true` では、偶数ページのヘッダに章見出し、奇数ページのヘッダに節見出しが入るようにしました。そのページに節見出しがある場合はその最初のもの、なければそれ以前の最後の節見出しが入ります。ただし、章の開始ページではヘッダは入りません。`book: true` 以外でページ番号が出ないバグを直しました。
+
+[2025-02-08] LaTeXの `\frontmatter` 相当の
+
+```
+#set heading(numbering: none)
+#set page(numbering: "i")
+```
+
+`\mainmatter` 相当の
+
+```
+#pagebreak(weak: true, to: "odd")
+#set heading(numbering: "1.1   ")
+#counter(page).update(1)
+#set page(numbering: "1")
+```
+
+などがちゃんと反映されるようにしたつもりです。
