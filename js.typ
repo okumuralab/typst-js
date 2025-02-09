@@ -2,8 +2,8 @@
 
 #let js(
   lang: "ja",
-  textfont: ("New Computer Modern", "Harano Aji Mincho"),
-  sansfont: ("Source Sans Pro", "Harano Aji Gothic"),
+  textfont: ("New Computer Modern", "Hiragino Mincho ProN", "Yu Mincho"),
+  sansfont: ("Arial", "Hiragino Kaku Gothic ProN", "Yu Gothic"),
   paper: "a4", // "a*", "b*", or (paperwidth, paperheight) e.g. (210mm, 297mm)
   fontsize: 10pt,
   baselineskip: auto,
@@ -105,7 +105,7 @@
     spacing: baselineskip - 0.88em, // 段落間
     leading: baselineskip - 0.88em, // 行間
   )
-  set heading(numbering: "1.1   ")
+  set heading(numbering: "1.1")
   show heading: set text(font: sansfont, weight: 450)
   show heading: it => {
     v(baselineskip, weak: true)

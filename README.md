@@ -31,3 +31,19 @@ typst compile example.typ
 ```
 
 などがちゃんと反映されるようにしたつもりです。
+
+[2025-02-09] デフォルトフォントを
+
+```
+  textfont: ("New Computer Modern", "Harano Aji Mincho"),
+  sansfont: ("Source Sans Pro", "Harano Aji Gothic"),
+```
+
+としていましたが、より一般的な
+
+```
+  textfont: ("New Computer Modern", "Hiragino Mincho ProN", "Yu Mincho"),
+  sansfont: ("Arial", "Hiragino Kaku Gothic ProN", "Yu Gothic"),
+```
+
+に変えました（存在しなければ警告が出ますがMacでもWindowsでもどれかのフォントが存在すると思います）。
