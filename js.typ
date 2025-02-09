@@ -100,7 +100,7 @@
     top-edge: 0.88em,
   )
   set par(
-    first-line-indent: 1em,
+    first-line-indent: (amount: 1em, all: true),  // Typst 0.13
     justify: true,
     spacing: baselineskip - 0.88em, // 段落間
     leading: baselineskip - 0.88em, // 行間
@@ -110,23 +110,20 @@
   show heading: it => {
     v(baselineskip, weak: true)
     it
-    par("")
-    v(-0.8 * baselineskip)
+    // par("")
+    v(0.2 * baselineskip)
   }
   show heading.where(level: 1): it => {
+    set par(first-line-indent: 0em, spacing: 2.5 * fontsize, leading: 1.3 * fontsize)
     if book {
       pagebreak(weak: true, to: "odd")
       v(2 * baselineskip)
       if it.numbering != none {
-        let h = counter(heading).get().at(0, default: 0)
-        par(text(2 * fontsize, "第" + str(h) + "章"))
+        let n = counter(heading).get().at(0, default: 0)
+        text(2 * fontsize, "第" + str(n) + "章")
+        linebreak()
       }
-      par(
-        first-line-indent: 0em,
-        spacing: 2.5 * fontsize,
-        leading: 1.3 * fontsize,
-        text(size: 2.5 * fontsize, it.body)
-      )
+      text(size: 2.5 * fontsize, it.body)
       v(2 * baselineskip)
     } else {
       v(2 * baselineskip, weak: true)
@@ -181,6 +178,7 @@
 #let scatter(s) = h(1fr) + s.text.clusters().join(h(2fr)) + h(1fr)
 #let ruby(yomi, kanji) = box[
   #context {
+    set par(first-line-indent: 0em)
     let w = measure(yomi).width / 2
     let x = measure(kanji).width
     if w < x { w = x }
@@ -188,6 +186,11 @@
     place(top + center, dy: -0.5em, box(width: w, text(0.5em, scatter(yomi))))
   }
 ]
+
+#let noindent(body) = {
+  set par(first-line-indent: 0em)
+  body
+}
 
 #let boxtable(x) = {
   if type(x) == array {
