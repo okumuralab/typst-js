@@ -143,6 +143,10 @@
     font: ((name: sansfont, covers: "latin-in-cjk"), sansfont-ja),
     weight: 450,
   )
+  show emph: set text(
+    font: ((name: seriffont, covers: "latin-in-cjk"), sansfont-ja),
+    weight: 450,
+  )
   set quote(block: true)
   show quote.where(block: true): set pad(left: 2em)
   show quote.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
@@ -150,15 +154,14 @@
   show enum: set block(spacing: 1.5 * baselineskip - 0.88em)
   show terms: set block(spacing: 1.5 * baselineskip - 0.88em)
   show math.equation.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
-  // set block(spacing: 1.5 * baselineskip - 0.88em)
+  // set block(spacing: 1.5 * baselineskip - 0.88em) // affects all blocks
   set terms(indent: 2em, separator: h(1em, weak: true))
   set enum(indent: 0.722em)
   set list(indent: 0.722em)
   show raw.where(block: true): set block(width: 100%, fill: luma(240), inset: 1em)
   show raw.where(block: true): set par(
     justify: false,
-    // spacing: 1.5 * baselineskip - 0.88em, // 段落間
-    leading: 0.8 * baselineskip - 0.88em, // 行間
+    leading: 0.8 * baselineskip - 0.88em,
   )
   set table(stroke: 0.4pt)
   show table: set text(top-edge: 0.76em)
@@ -186,11 +189,11 @@
 
 #let kintou(width, s) = box(width: width, s.text.clusters().join(h(1fr)))
 #let scatter(s) = h(1fr) + s.text.clusters().join(h(2fr)) + h(1fr)
-#let ruby(yomi, kanji) = box[
+#let ruby(kanji, yomi) = box[
   #context {
     set par(first-line-indent: 0em)
-    let w = measure(yomi).width / 2
-    let x = measure(kanji).width
+    let w = measure(kanji).width
+    let x = measure(yomi).width / 2
     if w < x { w = x }
     box(width: w, h(1fr) + kanji + h(1fr)) // or scatter(kanji)
     place(top + center, dy: -0.5em, box(width: w, text(0.5em, scatter(yomi))))
@@ -251,7 +254,7 @@
     #if abstract != [] {
       block(width: 90%)[
         #set text(0.9em)
-        *概要*
+        _概要_
         #align(left)[#abstract]
       ]
       v(1.5em)
