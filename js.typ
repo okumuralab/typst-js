@@ -2,8 +2,10 @@
 
 #let js(
   lang: "ja",
-  textfont: ("New Computer Modern", "Hiragino Mincho ProN", "Yu Mincho"),
-  sansfont: ("Arial", "Hiragino Kaku Gothic ProN", "Yu Gothic"),
+  seriffont: "New Computer Modern",
+  seriffont-ja: "Harano Aji Mincho",
+  sansfont: "Source Sans Pro",
+  sansfont-ja: "Harano Aji Gothic",
   paper: "a4", // "a*", "b*", or (paperwidth, paperheight) e.g. (210mm, 297mm)
   fontsize: 10pt,
   baselineskip: auto,
@@ -94,7 +96,7 @@
   )
   set text(
     lang: lang,
-    font: textfont,
+    font: ((name: seriffont, covers: "latin-in-cjk"), seriffont-ja),
     weight: 450,
     size: fontsize,
     top-edge: 0.88em,
@@ -106,7 +108,10 @@
     leading: baselineskip - 0.88em, // 行間
   )
   set heading(numbering: "1.1")
-  show heading: set text(font: sansfont, weight: 450)
+  show heading: set text(
+    font: ((name: sansfont, covers: "latin-in-cjk"), sansfont-ja),
+    weight: 450,
+  )
   show heading: it => {
     v(baselineskip, weak: true)
     it
@@ -134,20 +139,25 @@
     text(if book { 1.4 } else { 1.2 } * fontsize, it)
   }
   set list(indent: 1.2em)
-  show strong: set text(font: sansfont, weight: 450)
+  show strong: set text(
+    font: ((name: sansfont, covers: "latin-in-cjk"), sansfont-ja),
+    weight: 450,
+  )
   set quote(block: true)
   show quote.where(block: true): set pad(left: 2em)
   show quote.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
   show list: set block(spacing: 1.5 * baselineskip - 0.88em)
   show enum: set block(spacing: 1.5 * baselineskip - 0.88em)
+  show terms: set block(spacing: 1.5 * baselineskip - 0.88em)
+  show math.equation.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
+  // set block(spacing: 1.5 * baselineskip - 0.88em)
   set terms(indent: 2em, separator: h(1em, weak: true))
   set enum(indent: 0.722em)
   set list(indent: 0.722em)
-  show terms: set block(spacing: 1.5 * baselineskip - 0.88em)
   show raw.where(block: true): set block(width: 100%, fill: luma(240), inset: 1em)
   show raw.where(block: true): set par(
     justify: false,
-    spacing: 1.5 * baselineskip - 0.88em, // 段落間
+    // spacing: 1.5 * baselineskip - 0.88em, // 段落間
     leading: 0.8 * baselineskip - 0.88em, // 行間
   )
   set table(stroke: 0.4pt)
