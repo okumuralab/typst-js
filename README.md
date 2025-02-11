@@ -1,6 +1,6 @@
 # Typst template based on LaTeX jsarticle/jsbook
 
-LaTeXのjsarticle/jsbookっぽいTypstテンプレートです。
+LaTeXのjsarticle/jsbookっぽいTypstテンプレートです。Typst 0.13用です。
 
 とりあえず `js.typ` と `example.typ` を同じディレクトリに入れて
 
@@ -10,42 +10,12 @@ typst compile example.typ
 
 として、できた `example.pdf` をご覧ください。
 
-`#ruby[よみ][親文字]` などの定義も含めました。
+## What's New
 
-[2025-02-07] オプション `book: true` では、偶数ページのヘッダに章見出し、奇数ページのヘッダに節見出しが入るようにしました。そのページに節見出しがある場合はその最初のもの、なければそれ以前の最後の節見出しが入ります。ただし、章の開始ページではヘッダは入りません。`book: true` 以外でページ番号が出ないバグを直しました。
+[2024-02-11] Typst 0.13は日本語の扱いがかなり改良されており、0.12に固執する意味はなさそうなので、マージしてTypst 0.13用に一本化しました。
 
-[2025-02-08] LaTeXの `\frontmatter` 相当の
+[2024-02-10] `#ruby[親文字][読み]` の順序がLaTeXの一般的なマクロと逆になっていたのを正しました。
 
-```
-#set heading(numbering: none)
-#set page(numbering: "i")
-```
+[2024-02-10] 和文ゴシック体が2ウェイトあれば、`*強い強調*` はボールド、`_強調_` はレギュラーになるはずです。見出しはレギュラーに統一しました（はずです）。
 
-`\mainmatter` 相当の
-
-```
-#pagebreak(weak: true, to: "odd")
-#set heading(numbering: "1.1   ")
-#counter(page).update(1)
-#set page(numbering: "1")
-```
-
-などがちゃんと反映されるようにしたつもりです。
-
-[2025-02-09] デフォルトフォントを
-
-```
-  textfont: ("New Computer Modern", "Harano Aji Mincho"),
-  sansfont: ("Source Sans Pro", "Harano Aji Gothic"),
-```
-
-としていましたが、より一般的な
-
-```
-  textfont: ("New Computer Modern", "Hiragino Mincho ProN", "Yu Mincho"),
-  sansfont: ("Arial", "Hiragino Kaku Gothic ProN", "Yu Gothic"),
-```
-
-に変えました（存在しなければ警告が出ますがMacでもWindowsでもどれかのフォントが存在すると思います）。
-
-[2025-02-09] `for_0_13` というブランチにTypst 0.13用のコードを入れました。
+[2024-02-10] フォント指定のしかたを変えました。ありそうなフォントを並べる方式は警告が出るので、和欧それぞれ一つずつ指定する方式にしました。デフォルトはWeb版Typstにある原ノ味フォントとNew Computer Modern、Source Sans Proにしました。これらはTeX Liveに含まれていますが、ない場合は HaranoAjiMincho-Regular、HaranoAjiGothic-(Regular,Bold)、SourceSansPro-(Regular,Bold)[It] くらいを入れておけば便利です。

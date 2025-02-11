@@ -1,9 +1,11 @@
-// Template based on LaTeX jsarticle/jsbook
+// Template based on LaTeX jsarticle/jsbook for Typst 0.13
 
 #let js(
   lang: "ja",
-  textfont: ("New Computer Modern", "Hiragino Mincho ProN", "Yu Mincho"),
-  sansfont: ("Arial", "Hiragino Kaku Gothic ProN", "Yu Gothic"),
+  seriffont: "New Computer Modern",
+  seriffont-ja: "Harano Aji Mincho",
+  sansfont: "Source Sans Pro",
+  sansfont-ja: "Harano Aji Gothic",
   paper: "a4", // "a*", "b*", or (paperwidth, paperheight) e.g. (210mm, 297mm)
   fontsize: 10pt,
   baselineskip: auto,
@@ -48,7 +50,7 @@
       if not book { auto } else {
         context {
           let n = if page.numbering == none { "" } else {
-            counter(page).display(page.numbering)  // logical page number
+            counter(page).display()  // logical page number
           }
           let p = here().page()  // physical page number
           let h1 = heading.where(level: 1)
@@ -94,39 +96,38 @@
   )
   set text(
     lang: lang,
-    font: textfont,
+    font: ((name: seriffont, covers: "latin-in-cjk"), seriffont-ja),
     weight: 450,
     size: fontsize,
     top-edge: 0.88em,
   )
   set par(
-    first-line-indent: 1em,
+    first-line-indent: (amount: 1em, all: true),
     justify: true,
-    spacing: baselineskip - 0.88em, // 段落間
-    leading: baselineskip - 0.88em, // 行間
+    spacing: baselineskip - 0.88em, // space between paragraphs
+    leading: baselineskip - 0.88em, // space between lines
   )
   set heading(numbering: "1.1")
-  show heading: set text(font: sansfont, weight: 450)
+  show heading: set text(
+    font: ((name: sansfont, covers: "latin-in-cjk"), sansfont-ja),
+    weight: 450,
+  )
   show heading: it => {
     v(baselineskip, weak: true)
     it
-    par("")
-    v(-0.8 * baselineskip)
+    v(0.2 * baselineskip)
   }
   show heading.where(level: 1): it => {
+    set par(first-line-indent: 0em, spacing: 2.5 * fontsize, leading: 1.3 * fontsize)
     if book {
       pagebreak(weak: true, to: "odd")
       v(2 * baselineskip)
       if it.numbering != none {
-        let h = counter(heading).get().at(0, default: 0)
-        par(text(2 * fontsize, "第" + str(h) + "章"))
+        let n = counter(heading).get().at(0, default: 0)
+        text(2 * fontsize, "第" + str(n) + "章")
+        linebreak()
       }
-      par(
-        first-line-indent: 0em,
-        spacing: 2.5 * fontsize,
-        leading: 1.3 * fontsize,
-        text(size: 2.5 * fontsize, it.body)
-      )
+      text(size: 2.5 * fontsize, it.body)
       v(2 * baselineskip)
     } else {
       v(2 * baselineskip, weak: true)
@@ -137,21 +138,29 @@
     text(if book { 1.4 } else { 1.2 } * fontsize, it)
   }
   set list(indent: 1.2em)
-  show strong: set text(font: sansfont, weight: 450)
+  show strong: set text(
+    font: ((name: sansfont, covers: "latin-in-cjk"), sansfont-ja),
+    weight: 450,
+  )
+  show emph: set text(
+    font: ((name: seriffont, covers: "latin-in-cjk"), sansfont-ja),
+    weight: 450,
+  )
   set quote(block: true)
   show quote.where(block: true): set pad(left: 2em)
   show quote.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
   show list: set block(spacing: 1.5 * baselineskip - 0.88em)
   show enum: set block(spacing: 1.5 * baselineskip - 0.88em)
+  show terms: set block(spacing: 1.5 * baselineskip - 0.88em)
+  show math.equation.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
+  // set block(spacing: 1.5 * baselineskip - 0.88em) // affects all blocks
   set terms(indent: 2em, separator: h(1em, weak: true))
   set enum(indent: 0.722em)
   set list(indent: 0.722em)
-  show terms: set block(spacing: 1.5 * baselineskip - 0.88em)
   show raw.where(block: true): set block(width: 100%, fill: luma(240), inset: 1em)
   show raw.where(block: true): set par(
     justify: false,
-    spacing: 1.5 * baselineskip - 0.88em, // 段落間
-    leading: 0.8 * baselineskip - 0.88em, // 行間
+    leading: 0.8 * baselineskip - 0.88em,
   )
   set table(stroke: 0.4pt)
   show table: set text(top-edge: 0.76em)
@@ -179,15 +188,21 @@
 
 #let kintou(width, s) = box(width: width, s.text.clusters().join(h(1fr)))
 #let scatter(s) = h(1fr) + s.text.clusters().join(h(2fr)) + h(1fr)
-#let ruby(yomi, kanji) = box[
+#let ruby(kanji, yomi) = box[
   #context {
-    let w = measure(yomi).width / 2
-    let x = measure(kanji).width
+    set par(first-line-indent: 0em)
+    let w = measure(kanji).width
+    let x = measure(yomi).width / 2
     if w < x { w = x }
     box(width: w, h(1fr) + kanji + h(1fr)) // or scatter(kanji)
     place(top + center, dy: -0.5em, box(width: w, text(0.5em, scatter(yomi))))
   }
 ]
+
+#let noindent(body) = {
+  set par(first-line-indent: 0em)
+  body
+}
 
 #let boxtable(x) = {
   if type(x) == array {
@@ -238,7 +253,7 @@
     #if abstract != [] {
       block(width: 90%)[
         #set text(0.9em)
-        *概要*
+        _概要_
         #align(left)[#abstract]
       ]
       v(1.5em)
