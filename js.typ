@@ -1,4 +1,4 @@
-// Template based on LaTeX jsarticle/jsbook
+// Template based on LaTeX jsarticle/jsbook for Typst 0.13
 
 #let js(
   lang: "ja",
@@ -50,7 +50,7 @@
       if not book { auto } else {
         context {
           let n = if page.numbering == none { "" } else {
-            counter(page).display(page.numbering)  // logical page number
+            counter(page).display()  // logical page number
           }
           let p = here().page()  // physical page number
           let h1 = heading.where(level: 1)
@@ -102,10 +102,10 @@
     top-edge: 0.88em,
   )
   set par(
-    first-line-indent: (amount: 1em, all: true),  // Typst 0.13
+    first-line-indent: (amount: 1em, all: true),
     justify: true,
-    spacing: baselineskip - 0.88em, // 段落間
-    leading: baselineskip - 0.88em, // 行間
+    spacing: baselineskip - 0.88em, // space between paragraphs
+    leading: baselineskip - 0.88em, // space between lines
   )
   set heading(numbering: "1.1")
   show heading: set text(
@@ -115,7 +115,6 @@
   show heading: it => {
     v(baselineskip, weak: true)
     it
-    // par("")
     v(0.2 * baselineskip)
   }
   show heading.where(level: 1): it => {
