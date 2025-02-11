@@ -107,7 +107,7 @@
     spacing: baselineskip - 0.88em, // space between paragraphs
     leading: baselineskip - 0.88em, // space between lines
   )
-  set heading(numbering: "1.1")
+  set heading(numbering: "1.1   ")
   show heading: set text(
     font: ((name: sansfont, covers: "latin-in-cjk"), sansfont-ja),
     weight: 450,

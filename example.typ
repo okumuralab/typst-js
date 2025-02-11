@@ -1,13 +1,12 @@
 #import "js.typ": *
 #import "@preview/roremu:0.1.0": roremu
 
-#show: js.with()
-
-/*
 #show: js.with(
   lang: "ja",
-  textfont: ("New Computer Modern", "Harano Aji Mincho"), // or "Hiragino Mincho ProN" etc.
-  sansfont: ("Source Sans Pro", "Harano Aji Gothic"), // or "Hiragino Kaku Gothic ProN" etc.
+  seriffont: "New Computer Modern",
+  seriffont-ja: "Harano Aji Mincho",
+  sansfont: "Source Sans Pro",
+  sansfont-ja: "Harano Aji Gothic",
   paper: "a4", // "a*", "b*", or (paperwidth, paperheight) e.g. (210mm, 297mm)
   fontsize: 10pt,
   baselineskip: auto,
@@ -16,7 +15,6 @@
   book: false, // or true
   cols: 1, // or 2, 3, ...
 )
-*/
 
 #maketitle(
   title: "Typst日本語用テンプレートjs.typ",
@@ -42,10 +40,9 @@ Typst日本語用テンプレートです。p#LaTeX のjsarticle/jsbook相当品
 ]
 
 ```
-とある#ruby[か][科]#ruby[がく][学]の#ruby[レールガン][超電磁砲]
+とある#ruby[科][か]#ruby[学][がく]の#ruby[超電磁砲][レールガン]
 ```
 
 #quote[
-  とある#ruby[か][科]#ruby[がく][学]の#ruby[レールガン][超電磁砲]
+  とある#ruby[科][か]#ruby[学][がく]の#ruby[超電磁砲][レールガン]
 ]
-
