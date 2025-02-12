@@ -183,8 +183,8 @@
 
 // miscellaneous definitions
 
-#let TeX = box(baseline: 0.12em)[T#h(-0.2em)#text(baseline: 0.2em)[E]#h(-0.1em)X]
-#let LaTeX = box(baseline: 0.12em)[L#h(-0.3em)#text(size: 0.7em, baseline: -0.3em)[A]#h(-0.1em)#TeX]
+#let TeX = box[T#h(-0.2em)#text(baseline: 0.2em)[E]#h(-0.1em)X]
+#let LaTeX = box[L#h(-0.3em)#text(size: 0.7em, baseline: -0.3em)[A]#h(-0.1em)#TeX]
 
 #let kintou(width, s) = box(width: width, s.text.clusters().join(h(1fr)))
 #let scatter(s) = h(1fr) + s.text.clusters().join(h(2fr)) + h(1fr)
