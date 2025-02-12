@@ -100,13 +100,12 @@
     weight: 450,
     size: fontsize,
     top-edge: 0.88em,
-    bottom-edge: -0.12em,
   )
   set par(
     first-line-indent: (amount: 1em, all: true),
     justify: true,
-    spacing: baselineskip - 1em, // space between paragraphs
-    leading: baselineskip - 1em, // space between lines
+    spacing: baselineskip - 0.88em, // space between paragraphs
+    leading: baselineskip - 0.88em, // space between lines
   )
   set heading(numbering: "1.1   ")
   show heading: set text(
@@ -149,21 +148,22 @@
   )
   set quote(block: true)
   show quote.where(block: true): set pad(left: 2em)
-  show quote.where(block: true): set block(spacing: 1.5 * baselineskip - 1em)
-  show list: set block(spacing: 1.5 * baselineskip - 1em)
-  show enum: set block(spacing: 1.5 * baselineskip - 1em)
-  show terms: set block(spacing: 1.5 * baselineskip - 1em)
-  show math.equation.where(block: true): set block(spacing: 1.5 * baselineskip - 1em)
-  // set block(spacing: 1.5 * baselineskip - 1em) // affects all blocks
+  show quote.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
+  show list: set block(spacing: 1.5 * baselineskip - 0.88em)
+  show enum: set block(spacing: 1.5 * baselineskip - 0.88em)
+  show terms: set block(spacing: 1.5 * baselineskip - 0.88em)
+  show math.equation.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
+  // set block(spacing: 1.5 * baselineskip - 0.88em) // affects all blocks
   set terms(indent: 2em, separator: h(1em, weak: true))
   set enum(indent: 0.722em)
   set list(indent: 0.722em)
   show raw.where(block: true): set block(width: 100%, fill: luma(240), inset: 1em)
   show raw.where(block: true): set par(
     justify: false,
-    leading: 0.8 * baselineskip - 1em,
+    leading: 0.8 * baselineskip - 0.88em,
   )
   set table(stroke: 0.4pt)
+  show table: set text(top-edge: 0.76em)
   set footnote.entry(indent: 1.6em)
   show figure.where(kind: table): set figure.caption(position: top)
   show ref: it => { // remove 節, 式 etc and spaces from references
