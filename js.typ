@@ -2,10 +2,10 @@
 
 #let js(
   lang: "ja",
-  seriffont: "New Computer Modern",
-  seriffont-ja: "Harano Aji Mincho",
-  sansfont: "Source Sans Pro",
-  sansfont-ja: "Harano Aji Gothic",
+  seriffont: "New Computer Modern", // or "Libertinus Serif" or "Source Serif Pro"
+  seriffont-ja: "Harano Aji Mincho", // or "Yu Mincho" or "Hiragino Mincho ProN"
+  sansfont: "Source Sans Pro", // or "Arial" or "New Computer Modern Sans" or "Libertinus Sans"
+  sansfont-ja: "Harano Aji Gothic", // or "Yu Gothic" or "Hiragino Kaku Gothic ProN"
   paper: "a4", // "a*", "b*", or (paperwidth, paperheight) e.g. (210mm, 297mm)
   fontsize: 10pt,
   baselineskip: auto,
