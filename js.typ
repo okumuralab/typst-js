@@ -147,7 +147,7 @@
     weight: 450,
   )
   set quote(block: true)
-  show quote.where(block: true): set pad(left: 2em)
+  show quote.where(block: true): set pad(left: 2em, right: 0em)
   show quote.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
   show list: set block(spacing: 1.5 * baselineskip - 0.88em)
   show enum: set block(spacing: 1.5 * baselineskip - 0.88em)
