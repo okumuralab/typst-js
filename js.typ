@@ -13,6 +13,7 @@
   lines-per-page: auto,
   book: false,
   cols: 1,
+  non-ja: regex("[\u0000-\u2023]"),  // or "latin-in-cjk"
   body
 ) = {
   if paper == "a3" { paper = (297mm, 420mm) }
@@ -96,7 +97,7 @@
   )
   set text(
     lang: lang,
-    font: ((name: seriffont, covers: "latin-in-cjk"), seriffont-ja),
+    font: ((name: seriffont, covers: non-ja), seriffont-ja),
     weight: 450,
     size: fontsize,
     top-edge: 0.88em,
@@ -109,7 +110,7 @@
   )
   set heading(numbering: "1.1   ")
   show heading: set text(
-    font: ((name: sansfont, covers: "latin-in-cjk"), sansfont-ja),
+    font: ((name: sansfont, covers: non-ja), sansfont-ja),
     weight: 450,
   )
   show heading: it => {
@@ -139,11 +140,11 @@
   }
   set list(indent: 1.2em)
   show strong: set text(
-    font: ((name: sansfont, covers: "latin-in-cjk"), sansfont-ja),
+    font: ((name: sansfont, covers: non-ja), sansfont-ja),
     weight: 450,
   )
   show emph: set text(
-    font: ((name: seriffont, covers: "latin-in-cjk"), sansfont-ja),
+    font: ((name: seriffont, covers: non-ja), sansfont-ja),
     weight: 450,
   )
   set quote(block: true)
