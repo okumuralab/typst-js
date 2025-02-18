@@ -108,36 +108,66 @@
     spacing: baselineskip - 0.88em, // space between paragraphs
     leading: baselineskip - 0.88em, // space between lines
   )
-  set heading(numbering: "1.1   ")
+  set heading(numbering: "1.1")
   show heading: set text(
     font: ((name: sansfont, covers: non-ja), sansfont-ja),
     weight: 450,
   )
-  show heading: it => {
-    v(baselineskip, weak: true)
-    it
-    v(0.2 * baselineskip)
-  }
+  show heading: it => block(
+    above: 1.75 * baselineskip - 0.88 * fontsize,
+    below: 1.25 * baselineskip - 0.88 * fontsize,
+    breakable: false,
+    sticky: true,
+  )[
+    #if it.numbering != none {
+      counter(heading).display()
+      h(1em)
+    }
+    #it.body
+  ]
   show heading.where(level: 1): it => {
-    set par(first-line-indent: 0em, spacing: 2.5 * fontsize, leading: 1.3 * fontsize)
     if book {
       pagebreak(weak: true, to: "odd")
-      v(2 * baselineskip)
-      if it.numbering != none {
-        let n = counter(heading).get().at(0, default: 0)
-        text(2 * fontsize, "第" + str(n) + "章")
-        linebreak()
-      }
-      text(size: 2.5 * fontsize, it.body)
-      v(2 * baselineskip)
+      block[
+        #set par(first-line-indent: 0em, spacing: 2.5 * fontsize, leading: 1.3 * fontsize)
+        #v(2 * baselineskip)
+        #if it.numbering != none {
+          let n = counter(heading).get().at(0)
+          text(2 * fontsize, "第" + str(n) + "章")
+          linebreak()
+        }
+        #text(size: 2.5 * fontsize, it.body)
+        #v(2 * baselineskip)
+      ]
     } else {
-      v(2 * baselineskip, weak: true)
-      text(1.4 * fontsize, it)
+      block(
+        above: 2.5 * baselineskip - 0.88 * fontsize,
+        below: 1.5 * baselineskip - 0.88 * fontsize,
+        breakable: false,
+        sticky: true,
+      )[
+        #set text(size: 1.4 * fontsize)
+        #if it.numbering != none {
+          counter(heading).display()
+          h(1em)
+        }
+        #it.body
+      ]
     }
   }
-  show heading.where(level: 2): it => {
-    text(if book { 1.4 } else { 1.2 } * fontsize, it)
-  }
+  show heading.where(level: 2): it => block(
+    above: (if book { 2.75 } else { 1.75 }) * baselineskip - 0.88 * fontsize,
+    below: 1.25 * baselineskip - 0.88 * fontsize,
+    breakable: false,
+    sticky: true,
+  )[
+    #set text(size: (if book { 1.4 } else { 1.2 }) * fontsize)
+    #if it.numbering != none {
+      counter(heading).display()
+      h(1em)
+    }
+    #it.body
+  ]
   set list(indent: 1.2em)
   show strong: set text(
     font: ((name: sansfont, covers: non-ja), sansfont-ja),
