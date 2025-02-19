@@ -114,8 +114,8 @@
     weight: 450,
   )
   show heading: it => block(
-    above: 1.75 * baselineskip - 0.88 * fontsize,
-    below: 1.25 * baselineskip - 0.88 * fontsize,
+    above: (if book { 1.75 } else { 1 }) * baselineskip - 0.88 * fontsize,
+    below: (if book { 1.25 } else { 1 }) * baselineskip - 0.88 * fontsize,
     breakable: false,
     sticky: true,
   )[
@@ -141,12 +141,14 @@
       ]
     } else {
       block(
-        above: 2.5 * baselineskip - 0.88 * fontsize,
-        below: 1.5 * baselineskip - 0.88 * fontsize,
+        above: baselineskip - 0.88 * fontsize,
+        below: 1.5 * baselineskip - 1.056 * fontsize,
         breakable: false,
         sticky: true,
       )[
+        #set par(first-line-indent: 0em)
         #set text(size: 1.4 * fontsize)
+        #v(0.5 * baselineskip - 0.176 * fontsize)
         #if it.numbering != none {
           counter(heading).display()
           h(1em)
@@ -156,12 +158,14 @@
     }
   }
   show heading.where(level: 2): it => block(
-    above: (if book { 2.75 } else { 1.75 }) * baselineskip - 0.88 * fontsize,
-    below: 1.25 * baselineskip - 0.88 * fontsize,
+    above: (if book { 2.75 } else { 1 }) * baselineskip - 0.88 * fontsize,
+    below: (if book { 1.25 } else { 1 }) * baselineskip - 0.88 * fontsize,
     breakable: false,
     sticky: true,
   )[
+    #set par(first-line-indent: 0em)
     #set text(size: (if book { 1.4 } else { 1.2 }) * fontsize)
+    #if not book { v(baselineskip - 0.176 * fontsize) }
     #if it.numbering != none {
       counter(heading).display()
       h(1em)
