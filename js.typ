@@ -3,9 +3,9 @@
 #let js(
   lang: "ja",
   seriffont: "New Computer Modern", // or "Libertinus Serif" or "Source Serif Pro"
-  seriffont-ja: "Harano Aji Mincho", // or "Yu Mincho" or "Hiragino Mincho ProN"
+  seriffont-cjk: "Harano Aji Mincho", // or "Yu Mincho" or "Hiragino Mincho ProN"
   sansfont: "Source Sans Pro", // or "Arial" or "New Computer Modern Sans" or "Libertinus Sans"
-  sansfont-ja: "Harano Aji Gothic", // or "Yu Gothic" or "Hiragino Kaku Gothic ProN"
+  sansfont-cjk: "Harano Aji Gothic", // or "Yu Gothic" or "Hiragino Kaku Gothic ProN"
   paper: "a4", // "a*", "b*", or (paperwidth, paperheight) e.g. (210mm, 297mm)
   fontsize: 10pt,
   baselineskip: auto,
@@ -13,7 +13,8 @@
   lines-per-page: auto,
   book: false,
   cols: 1,
-  non-ja: regex("[\u0000-\u2023]"),  // or "latin-in-cjk"
+  non-cjk: regex("[\u0000-\u2023]"), // or "latin-in-cjk"
+  cjkheight: 0.88, // height of CJK in em
   body
 ) = {
   if paper == "a3" { paper = (297mm, 420mm) }
@@ -97,25 +98,25 @@
   )
   set text(
     lang: lang,
-    font: ((name: seriffont, covers: non-ja), seriffont-ja),
+    font: ((name: seriffont, covers: non-cjk), seriffont-cjk),
     weight: 450,
     size: fontsize,
-    top-edge: 0.88em,
+    top-edge: cjkheight * fontsize,
   )
   set par(
     first-line-indent: (amount: 1em, all: true),
     justify: true,
-    spacing: baselineskip - 0.88em, // space between paragraphs
-    leading: baselineskip - 0.88em, // space between lines
+    spacing: baselineskip - cjkheight * fontsize, // space between paragraphs
+    leading: baselineskip - cjkheight * fontsize, // space between lines
   )
   set heading(numbering: "1.1")
   show heading: set text(
-    font: ((name: sansfont, covers: non-ja), sansfont-ja),
+    font: ((name: sansfont, covers: non-cjk), sansfont-cjk),
     weight: 450,
   )
   show heading: it => block(
-    above: (if book { 1.75 } else { 1 }) * baselineskip - 0.88 * fontsize,
-    below: (if book { 1.25 } else { 1 }) * baselineskip - 0.88 * fontsize,
+    above: (if book { 1.75 } else { 1 }) * baselineskip - cjkheight * fontsize,
+    below: (if book { 1.25 } else { 1 }) * baselineskip - cjkheight * fontsize,
     breakable: false,
     sticky: true,
   )[
@@ -129,7 +130,7 @@
     if book {
       pagebreak(weak: true, to: "odd")
       block[
-        #set par(first-line-indent: 0em, spacing: 2.5 * fontsize, leading: 1.3 * fontsize)
+        #set par(first-line-indent: 0em, spacing: 3 * fontsize, leading: 3 * fontsize)
         #v(2 * baselineskip)
         #if it.numbering != none {
           let n = counter(heading).get().at(0)
@@ -141,14 +142,14 @@
       ]
     } else {
       block(
-        above: baselineskip - 0.88 * fontsize,
-        below: 1.5 * baselineskip - 1.056 * fontsize,
+        above: baselineskip - cjkheight * fontsize,
+        below: 1.5 * baselineskip - 1.2 * cjkheight * fontsize,
         breakable: false,
         sticky: true,
       )[
         #set par(first-line-indent: 0em)
         #set text(size: 1.4 * fontsize)
-        #v(0.5 * baselineskip - 0.176 * fontsize)
+        #v(0.5 * baselineskip - 0.2 * cjkheight * fontsize)
         #if it.numbering != none {
           counter(heading).display()
           h(1em)
@@ -158,14 +159,14 @@
     }
   }
   show heading.where(level: 2): it => block(
-    above: (if book { 2.75 } else { 1 }) * baselineskip - 0.88 * fontsize,
-    below: (if book { 1.25 } else { 1 }) * baselineskip - 0.88 * fontsize,
+    above: (if book { 2.75 } else { 1 }) * baselineskip - cjkheight * fontsize,
+    below: (if book { 1.25 } else { 1 }) * baselineskip - cjkheight * fontsize,
     breakable: false,
     sticky: true,
   )[
     #set par(first-line-indent: 0em)
     #set text(size: (if book { 1.4 } else { 1.2 }) * fontsize)
-    #if not book { v(baselineskip - 0.176 * fontsize) }
+    #if not book { v(baselineskip - 0.2 * cjkheight * fontsize) }
     #if it.numbering != none {
       counter(heading).display()
       h(1em)
@@ -174,31 +175,31 @@
   ]
   set list(indent: 1.2em)
   show strong: set text(
-    font: ((name: sansfont, covers: non-ja), sansfont-ja),
+    font: ((name: sansfont, covers: non-cjk), sansfont-cjk),
     weight: 450,
   )
   show emph: set text(
-    font: ((name: seriffont, covers: non-ja), sansfont-ja),
+    font: ((name: seriffont, covers: non-cjk), sansfont-cjk),
     weight: 450,
   )
   set quote(block: true)
   show quote.where(block: true): set pad(left: 2em, right: 0em)
-  show quote.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
-  show list: set block(spacing: 1.5 * baselineskip - 0.88em)
-  show enum: set block(spacing: 1.5 * baselineskip - 0.88em)
-  show terms: set block(spacing: 1.5 * baselineskip - 0.88em)
-  show math.equation.where(block: true): set block(spacing: 1.5 * baselineskip - 0.88em)
-  // set block(spacing: 1.5 * baselineskip - 0.88em) // affects all blocks
+  show quote.where(block: true): set block(spacing: 1.5 * baselineskip - cjkheight * fontsize)
+  show list: set block(spacing: 1.5 * baselineskip - cjkheight * fontsize)
+  show enum: set block(spacing: 1.5 * baselineskip - cjkheight * fontsize)
+  show terms: set block(spacing: 1.5 * baselineskip - cjkheight * fontsize)
+  show math.equation.where(block: true): set block(spacing: 1.5 * baselineskip - cjkheight * fontsize)
+  // set block(spacing: 1.5 * baselineskip - cjkheight * fontsize) // affects all blocks
   set terms(indent: 2em, separator: h(1em, weak: true))
   set enum(indent: 0.722em)
   set list(indent: 0.722em)
   show raw.where(block: true): set block(width: 100%, fill: luma(240), inset: 1em)
   show raw.where(block: true): set par(
     justify: false,
-    leading: 0.8 * baselineskip - 0.88em,
+    leading: 0.8 * baselineskip - cjkheight * fontsize,
   )
-  set table(stroke: 0.4pt)
-  show table: set text(top-edge: 0.76em)
+  set table(stroke: 0.04em)
+  show table: set text(top-edge: (2 * cjkheight - 1) * fontsize)
   set footnote.entry(indent: 1.6em)
   show figure.where(kind: table): set figure.caption(position: top)
   show ref: it => { // remove 節, 式 etc and spaces from references
@@ -226,6 +227,7 @@
 #let ruby(kanji, yomi) = box[
   #context {
     set par(first-line-indent: 0em)
+    set text(top-edge: "ascender")
     let w = measure(kanji).width
     let x = measure(yomi).width / 2
     if w < x { w = x }
@@ -241,7 +243,7 @@
 
 #let boxtable(x) = {
   if type(x) == array {
-    box(baseline: 100%-0.76em-0.4em,
+    box(baseline: 100%-1.16em,  // 100% - (2 * cjkheight - 1.4) * 1em,
         table(stroke: 0pt, inset: 0.4em, columns: 1, align: center, ..x))
   } else {
     box(x)

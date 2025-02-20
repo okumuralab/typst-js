@@ -2,7 +2,7 @@
 
 LaTeXのjsarticle/jsbookっぽいTypstテンプレートです。Typst 0.13用です。ライセンスはMIT-0（実質パブリックドメイン）としましたのでご自由に修正してお使いください。
 
-とりあえず `js.typ` と `example.typ` を同じディレクトリに入れて
+とりあえず `js.typ` と `template/example.typ` を同じディレクトリに入れて
 
 ```
 typst compile example.typ
@@ -11,6 +11,8 @@ typst compile example.typ
 として、できた `example.pdf` をご覧ください。
 
 ## What's New
+
+[2025-02-20] オプション名に付く `-ja` を `-cjk` にしました。オプション `cjkheight: 0.88` を追加しました。
 
 [2025-02-19] 見出しのスペーシングを微調整。
 
