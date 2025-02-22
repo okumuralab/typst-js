@@ -12,7 +12,7 @@ typst compile example.typ
 
 ## What's New
 
-[2025-02-22] Typst Universeにプルレクしてみました。
+[2025-02-22] Typst Universeにプルリクしてみました。
 
 [2025-02-20] オプション名に付く `-ja` を `-cjk` にしました。オプション `cjkheight: 0.88` を追加しました。
 
