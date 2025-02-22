@@ -9,7 +9,7 @@
   paper: "a4", // "a*", "b*", or (paperwidth, paperheight) e.g. (210mm, 297mm)
   fontsize: 10pt,
   baselineskip: auto,
-  textwidth: auto,
+  textwidth: auto, // or 40em etc. (include 2em column gutter)
   lines-per-page: auto,
   book: false,
   cols: 1,
