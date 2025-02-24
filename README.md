@@ -16,6 +16,24 @@ typst compile example.typ
 
 として、できた `example.pdf` をご覧ください。
 
+フォントはWeb版Typstでうまくいくような初期設定になっています。うまくいかなければ、`example.typ` 先頭部分のフォント指定を適当に書き直してください。Macなら
+
+```
+  seriffont-cjk: "Hiragino Mincho ProN",
+  sansfont: "Helvetica",
+  sansfont-cjk: "Hiragino Kaku Gothic ProN",
+```
+
+Windowsなら
+
+```
+  seriffont-cjk: "Yu Mincho",
+  sansfont: "Arial",
+  sansfont-cjk: "Yu Gothic",
+```
+
+あたりでうまくいくのではないかと思います。
+
 ## What's New
 
 [2025-02-24] Typst Universeに入ったようです。
