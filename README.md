@@ -2,7 +2,13 @@
 
 LaTeXのjsarticle/jsbookっぽいTypstテンプレートです。Typst 0.13用です。ライセンスはMIT-0（実質パブリックドメイン）としましたのでご自由に修正してお使いください。
 
-とりあえず `js.typ` と `template/example.typ` を同じディレクトリに入れて
+Typst Universeに入れていただきました。ターミナルに
+
+```
+typst init @preview/js:0.1.0
+```
+
+と打ち込むと、カレントディレクトリに `js` というフォルダができますので、その中に入って
 
 ```
 typst compile example.typ
@@ -11,6 +17,8 @@ typst compile example.typ
 として、できた `example.pdf` をご覧ください。
 
 ## What's New
+
+[2025-02-24] Typst Universeに入ったようです。
 
 [2025-02-22] Typst Universeにプルリクしてみました。
 
