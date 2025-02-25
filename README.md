@@ -16,7 +16,7 @@ typst compile example.typ
 
 として、できた `example.pdf` をご覧ください。
 
-フォントはWeb版Typstでうまくいくような初期設定になっています。うまくいかなければ、`example.typ` 先頭部分のフォント指定を適当に書き直してください。Macなら
+フォントはWeb版Typstでうまくいくような初期設定になっています。うまくいかなければ、`example.typ` 先頭部分のフォント指定を適当に書き直してください。コマンド版Typstなら、`typst fonts` と打ち込めば、使えるフォント名の一覧が出力されますので、その中から選んでください。Macなら
 
 ```
   seriffont-cjk: "Hiragino Mincho ProN",
@@ -33,6 +33,14 @@ Windowsなら
 ```
 
 あたりでうまくいくのではないかと思います。
+
+TeX Liveがインストールされているなら、そのOpenTypeディレクトリをTypstのフォントサーチパスに加えてください。例えば
+
+```
+export TYPST_FONT_PATHS=/usr/local/texlive/2024/texmf-dist/fonts/opentype
+```
+
+のようにします。これなら js のデフォルトのままで大丈夫です。
 
 ## What's New
 
