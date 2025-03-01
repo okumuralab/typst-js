@@ -44,6 +44,8 @@ export TYPST_FONT_PATHS=/usr/local/texlive/2024/texmf-dist/fonts/opentype
 
 ## What's New
 
+[2025-03-01] bookでない場合に、見出しが行送りの整数倍になるように調整しました（うまくいっているでしょうか）。まだTypst Universe版は直していません。
+
 [2025-02-24] Typst Universeに入ったようです。
 
 [2025-02-22] Typst Universeにプルリクしてみました。

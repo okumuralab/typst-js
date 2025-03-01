@@ -143,18 +143,19 @@
     } else {
       block(
         above: baselineskip - cjkheight * fontsize,
-        below: 1.5 * baselineskip - 1.2 * cjkheight * fontsize,
+        below: baselineskip - cjkheight * fontsize,
         breakable: false,
         sticky: true,
       )[
         #set par(first-line-indent: 0em)
         #set text(size: 1.4 * fontsize)
-        #v(0.5 * baselineskip - 0.2 * cjkheight * fontsize)
+        #v(baselineskip / 2 + 0.2 * fontsize)
         #if it.numbering != none {
           counter(heading).display()
           h(1em)
         }
         #it.body
+        #v(baselineskip / 2 - 0.2 * fontsize)
       ]
     }
   }
@@ -166,12 +167,13 @@
   )[
     #set par(first-line-indent: 0em)
     #set text(size: (if book { 1.4 } else { 1.2 }) * fontsize)
-    #if not book { v(baselineskip - 0.2 * cjkheight * fontsize) }
+    #if not book { v(baselineskip / 2 + 0.1 * fontsize) }
     #if it.numbering != none {
       counter(heading).display()
       h(1em)
     }
     #it.body
+    #if not book { v(baselineskip / 2 - 0.1 * fontsize) }
   ]
   set list(indent: 1.2em)
   show strong: set text(
