@@ -5,7 +5,7 @@ LaTeXのjsarticle/jsbookっぽいTypstテンプレートです。Typst 0.13用�
 Typst Universeに入れていただきました。ターミナルに
 
 ```
-typst init @preview/js:0.1.0
+typst init @preview/js:0.1.1
 ```
 
 と打ち込むと、カレントディレクトリに `js` というフォルダができますので、その中に入って
@@ -43,6 +43,8 @@ export TYPST_FONT_PATHS=/usr/local/texlive/2024/texmf-dist/fonts/opentype
 のようにします。これなら js のデフォルトのままで大丈夫です。
 
 ## What's New
+
+[2025-03-03] バージョン0.1.1がTypst Universeに入りました。
 
 [2025-03-01] bookでない場合に、見出しが行送りの整数倍になるように調整しました（うまくいっているでしょうか）。まだTypst Universe版は直していません。
 
