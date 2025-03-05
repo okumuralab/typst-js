@@ -44,7 +44,7 @@ export TYPST_FONT_PATHS=/usr/local/texlive/2024/texmf-dist/fonts/opentype
 
 ## What's New
 
-[2025-03-05] [図と表が混在する場合にrefで出力される番号が不正になる #1](https://github.com/okumuralab/typst-js/issues/1) に対処しました。ありがとうございます。
+[2025-03-05] [図と表が混在する場合にrefで出力される番号が不正になる #1](https://github.com/okumuralab/typst-js/issues/1) に対処しました。ありがとうございます。数文字違いなので0.1.1のままでプルリクしたら、少しでもコードが変われば0.1.2にしてくれとのことで、この修正は0.1.2になります。
 
 [2025-03-03] バージョン0.1.1がTypst Universeに入りました。
 
