@@ -207,10 +207,8 @@
   show ref: it => { // remove 節, 式 etc and spaces from references
     let el = it.element
     if el != none {
-      link(el.location(),numbering(
-        el.numbering,
-        ..el.counter.at(el.location())
-      ).trim())
+      show regex("\p{letter}+\s+"): none
+      it
     } else {
       it
     }
