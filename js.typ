@@ -204,15 +204,7 @@
   show table: set text(top-edge: (2 * cjkheight - 1) * fontsize)
   set footnote.entry(indent: 1.6em)
   show figure.where(kind: table): set figure.caption(position: top)
-  show ref: it => { // remove 節, 式 etc and spaces from references
-    let el = it.element
-    if el != none {
-      show regex("\p{letter}+\s+"): none
-      it
-    } else {
-      it
-    }
-  }
+  set ref(supplement: none)
   // finally
   body
 }
