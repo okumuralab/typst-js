@@ -5,7 +5,7 @@ LaTeXのjsarticle/jsbookっぽいTypstテンプレートです。Typst 0.13用�
 Typst Universeに入れていただきました。ターミナルに
 
 ```
-typst init @preview/js:0.1.2
+typst init @preview/js:0.1.3
 ```
 
 と打ち込むと、カレントディレクトリに `js` というフォルダができますので、その中に入って
@@ -44,7 +44,7 @@ export TYPST_FONT_PATHS=/usr/local/texlive/2024/texmf-dist/fonts/opentype
 
 ## What's New
 
-[2025-03-25] `set ref(supplement: none)` でいいのではというご教示をいただきましたので、そちらに直しました。ありがとうございます。
+[2025-03-25] `set ref(supplement: none)` でいいのではというご教示をいただきましたので、そちらに直しました。ありがとうございます。で、Typst Universeにプルレクしたら、その日のうちに 0.1.3 として登録されました。
 
 [2025-03-24] [図と表が混在する場合にrefで出力される番号が不正になる #1](https://github.com/okumuralab/typst-js/issues/1) に対応したところ、今度は [リファレンスが機能しない #2](https://github.com/okumuralab/typst-js/issues/2) というバグが生じていました。ググったら [これ](https://forum.typst.app/t/how-to-correctly-customize-equation-numbering-referencing-simultaneously/2485) を見つけました。全然きれいでないですが、これしかないんでしょうか。あるいはこの機能を諦めるか。とりあえずこちらのリポジトリでは以下のようにしてみました。
 
