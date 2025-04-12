@@ -32,12 +32,12 @@ Windowsなら
   sansfont-cjk: "Yu Gothic",
 ```
 
-あたりでうまくいくのではないかと思います。
+あたりでうまくいくのではないかと思います。新しいWindows 11なら日本語は `Noto Serif JP`、`Noto Sans JP` が良さそうです。
 
 TeX Liveがインストールされているなら、そのOpenTypeディレクトリをTypstのフォントサーチパスに加えてください。例えば
 
 ```
-export TYPST_FONT_PATHS=/usr/local/texlive/2024/texmf-dist/fonts/opentype
+export TYPST_FONT_PATHS=/usr/local/texlive/2025/texmf-dist/fonts/opentype
 ```
 
 のようにします。これなら js のデフォルトのままで大丈夫です。

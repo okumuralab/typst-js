@@ -1,4 +1,4 @@
-#import "@preview/js:0.1.0": *
+#import "@preview/js:0.1.3": *
 // or put your modified `js.typ` in the same folder and `#import "js.typ": *`
 
 #show: js.with(
