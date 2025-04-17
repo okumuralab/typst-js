@@ -32,7 +32,7 @@ Windowsなら
   sansfont-cjk: "Yu Gothic",
 ```
 
-あたりでうまくいくのではないかと思います。新しいWindows 11なら日本語は `Noto Serif JP`、`Noto Sans JP` が良さそうです。
+あたりでうまくいくのではないかと思います。新しいWindows 11なら日本語は `Noto Serif JP`、`Noto Sans JP` が良さそうだと思ったのですが [新しいWindowsのNoto JPフォントをTypstやLaTeXで使う（使えない）件](https://zrbabbler.hatenablog.com/entry/2025/04/14/234338) という問題があるようです。
 
 TeX Liveがインストールされているなら、そのOpenTypeディレクトリをTypstのフォントサーチパスに加えてください。例えば
 
