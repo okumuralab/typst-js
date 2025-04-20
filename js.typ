@@ -102,6 +102,8 @@
     weight: 450,
     size: fontsize,
     top-edge: cjkheight * fontsize,
+    costs: (widow: if cols == 1 { 100% } else { 0% },
+            orphan: if cols == 1 { 100% } else { 0% })
   )
   set par(
     first-line-indent: (amount: 1em, all: true),

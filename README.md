@@ -44,6 +44,8 @@ export TYPST_FONT_PATHS=/usr/local/texlive/2025/texmf-dist/fonts/opentype
 
 ## What's New
 
+[2025-04-20] 段組時のwidow、orphanペナルティをゼロにしました。
+
 [2025-04-07] 同趣向のテンプレート [jcls-typst](https://github.com/tkrhsmt/jcls-typst) があることを教えていただきました。例の [Adobe Blankによるゴースト](https://qiita.com/zr_tex8r/items/a9d82669881d8442b574) も使ってあり、参考になります。
 
 [2025-03-25] `set ref(supplement: none)` でいいのではというご教示をいただきましたので、そちらに直しました。ありがとうございます。で、Typst Universeにプルリクしたら、その日のうちに 0.1.3 として登録されました。
