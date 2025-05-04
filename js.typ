@@ -222,10 +222,8 @@
       if book {
         if el.depth == 1 {
           link(el.location(), [第#sec-cnt.at(0)章])
-        } else if el.depth == 2{
-          link(el.location(), [第#sec-cnt.at(0)章#sec-cnt.at(1)節])
         } else {
-          link(el.location(), [第#sec-cnt.at(0)章#sec-cnt.at(1)節#sec-cnt.at(2)項])
+          link(el.location(), [第#sec-cnt.at(0)章#sec-cnt.slice(1).map(n => str(n)).join(".")節])
         }
       }
       else {
