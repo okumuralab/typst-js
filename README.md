@@ -1,6 +1,6 @@
 # Typst template based on LaTeX jsarticle/jsbook
 
-LaTeXのjsarticle/jsbookっぽいTypstテンプレートです。Typst 0.13用です。ライセンスはMIT-0（実質パブリックドメイン）としましたのでご自由に修正してお使いください。
+LaTeXのjsarticle/jsbookっぽいTypstテンプレートです。Typst 0.13〜0.15用です。ライセンスはMIT-0（実質パブリックドメイン）としましたのでご自由に修正してお使いください。
 
 Typst Universeに入れていただきました。ターミナルに
 
