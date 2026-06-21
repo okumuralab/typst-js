@@ -206,7 +206,34 @@
   show table: set text(top-edge: (2 * cjkheight - 1) * fontsize)
   set footnote.entry(indent: 1.6em)
   show figure.where(kind: table): set figure.caption(position: top)
-  set ref(supplement: none)
+  show ref: it => {
+    let eq = math.equation
+    let el = it.element
+    if el != none and el.func() == eq {
+      if eq.numbering != none {
+        link(el.location(), numbering(
+          el.numbering,
+          ..counter(eq).at(el.location())
+        ))
+      }
+    }
+    else if el != none and el.func() == heading {
+      let sec-cnt = counter(heading).at(el.location())
+      if book {
+        if el.depth == 1 {
+          link(el.location(), [第#sec-cnt.at(0)章])
+        } else {
+          link(el.location(), [第#sec-cnt.at(0)章#sec-cnt.slice(1).map(n => str(n)).join(".")節])
+        }
+      }
+      else {
+        link(el.location(), sec-cnt.map(n => str(n)).join("."))
+      }
+    } 
+    else {
+      it
+    }
+  }
   // finally
   body
 }
