@@ -1,11 +1,11 @@
-#import "@preview/js:0.1.3": *
+#import "@preview/js:0.1.4": *
 // or put your modified `js.typ` in the same folder and `#import "js.typ": *`
 
 #show: js.with(
   lang: "ja",
   seriffont: "New Computer Modern",
   seriffont-cjk: "Harano Aji Mincho", // or "Yu Mincho" or "Hiragino Mincho ProN"
-  sansfont: "Source Sans Pro", // or "Arial" or "Helvetica"
+  sansfont: "Source Sans 3", // or "Arial" or "Helvetica"
   sansfont-cjk: "Harano Aji Gothic", // or "Yu Gothic" or "Hiragino Kaku Gothic ProN"
   paper: "a4", // "a*", "b*", or (paperwidth, paperheight) e.g. (210mm, 297mm)
   fontsize: 10pt,

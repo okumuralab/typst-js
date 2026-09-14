@@ -1,6 +1,6 @@
 # Typst template based on LaTeX jsarticle/jsbook
 
-LaTeXのjsarticle/jsbookっぽいTypstテンプレートです。Typst 0.13〜0.15用です。ライセンスはMIT-0（実質パブリックドメイン）としましたのでご自由に修正してお使いください。
+LaTeXのjsarticle/jsbookっぽいTypstテンプレートです。Typst 0.13〜0.15.1用です。ライセンスはMIT-0（実質パブリックドメイン）としましたのでご自由に修正してお使いください。
 
 Typst Universeに入れていただきました。ターミナルに
 
@@ -37,12 +37,14 @@ Windowsなら
 TeX Liveがインストールされているなら、そのOpenTypeディレクトリをTypstのフォントサーチパスに加えてください。例えば
 
 ```
-export TYPST_FONT_PATHS=/usr/local/texlive/2025/texmf-dist/fonts/opentype
+export TYPST_FONT_PATHS=/usr/local/texlive/2026/texmf-dist/fonts/opentype
 ```
 
-のようにします。これなら js のデフォルトのままで大丈夫です。TeX Live 2026では `Source Sans Pro` を `Source Sans 3` としてください。
+のようにします。
 
 ## What's New
+
+[2025-09-14] [h1およびh2のサイズ設定を追加](https://github.com/okumuralab/typst-js/pull/6)をマージしました。ついでにサンプルのフォント `Source Sans Pro` を `Source Sans 3` にしました。
 
 [2025-04-20] 段組時のwidow、orphanペナルティをゼロにしました。
 
