@@ -1,10 +1,10 @@
-// Template based on LaTeX jsarticle/jsbook for Typst 0.13
+// Template based on LaTeX jsarticle/jsbook for Typst 0.15
 
 #let js(
   lang: "ja",
   seriffont: "New Computer Modern", // or "Libertinus Serif" or "Source Serif Pro"
   seriffont-cjk: "Harano Aji Mincho", // or "Yu Mincho" or "Hiragino Mincho ProN"
-  sansfont: "Source Sans Pro", // or "Arial" or "New Computer Modern Sans" or "Libertinus Sans"
+  sansfont: "Source Sans 3", // or "Arial" or "New Computer Modern Sans" or "Libertinus Sans"
   sansfont-cjk: "Harano Aji Gothic", // or "Yu Gothic" or "Hiragino Kaku Gothic ProN"
   paper: "a4", // "a*", "b*", or (paperwidth, paperheight) e.g. (210mm, 297mm)
   fontsize: 10pt,
