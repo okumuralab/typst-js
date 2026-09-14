@@ -15,6 +15,9 @@
   cols: 1,
   non-cjk: regex("[\u0000-\u2023]"), // or "latin-in-cjk"
   cjkheight: 0.88, // height of CJK in em
+  h1-size: auto, // level-1 heading size: `auto`, a length (e.g. 18pt), or a number (ratio to fontsize)
+  h1-label-size: auto, // book-mode "第n章" label size: `auto`, a length, or a ratio to fontsize
+  h2-size: auto, // level-2 heading size: `auto`, a length, or a ratio to fontsize
   body
 ) = {
   if paper == "a3" { paper = (297mm, 420mm) }
@@ -29,6 +32,21 @@
     textwidth = (int(0.76 * paperwidth / (cols * fontsize)) * cols + 2 * (cols - 1)) * fontsize
   }
   if baselineskip == auto { baselineskip = 1.73 * fontsize }
+
+  // resolve a size param that may be: auto, a length (absolute pt), or a bare number (ratio to fontsize)
+  let resolve-size(val, default-ratio) = {
+    if val == auto {
+      default-ratio * fontsize
+    } else if type(val) == length {
+      val
+    } else {
+      val * fontsize
+    }
+  }
+  h1-size = resolve-size(h1-size, if book { 2.5 } else { 1.4 })
+  h1-label-size = resolve-size(h1-label-size, 2)
+  h2-size = resolve-size(h2-size, if book { 1.4 } else { 1.2 })
+
   let xmargin = (paperwidth - textwidth) / 2
   let ymargin = if lines-per-page == auto {
     (paperheight - (int((0.83 * paperheight - fontsize) / baselineskip)
@@ -136,10 +154,10 @@
         #v(2 * baselineskip)
         #if it.numbering != none {
           let n = counter(heading).get().at(0)
-          text(2 * fontsize, "第" + str(n) + "章")
+          text(h1-label-size, "第" + str(n) + "章")
           linebreak()
         }
-        #text(size: 2.5 * fontsize, it.body)
+        #text(size: h1-size, it.body)
         #v(2 * baselineskip)
       ]
     } else {
@@ -150,7 +168,7 @@
         sticky: true,
       )[
         #set par(first-line-indent: 0em)
-        #set text(size: 1.4 * fontsize)
+        #set text(size: h1-size)
         #v(baselineskip / 2 + 0.2 * fontsize)
         #if it.numbering != none {
           counter(heading).display()
@@ -168,7 +186,7 @@
     sticky: true,
   )[
     #set par(first-line-indent: 0em)
-    #set text(size: (if book { 1.4 } else { 1.2 }) * fontsize)
+    #set text(size: h2-size)
     #if not book { v(baselineskip / 2 + 0.1 * fontsize) }
     #if it.numbering != none {
       counter(heading).display()
