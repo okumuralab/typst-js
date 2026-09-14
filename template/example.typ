@@ -16,6 +16,9 @@
   cols: 2, // 1, 2, 3, ...
   non-cjk: regex("[\u0000-\u2023]"),  // or "latin-in-cjk" or any regex
   cjkheight: 0.88, // height of CJK in em
+  h1-size: auto, // level-1 heading size: `auto`, a length (e.g. 18pt), or a number (ratio to fontsize)
+  h1-label-size: auto, // book-mode "第n章" label size: `auto`, a length, or a ratio to fontsize
+  h2-size: auto, // level-2 heading size: `auto`, a length, or a ratio to fontsize
 )
 
 #maketitle(
