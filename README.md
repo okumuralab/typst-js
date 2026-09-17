@@ -5,7 +5,7 @@ LaTeXのjsarticle/jsbookっぽいTypstテンプレートです。Typst 0.13〜0.
 Typst Universeに入れていただきました。ターミナルに
 
 ```
-typst init @preview/js:0.1.3
+typst init @preview/js:0.1.4
 ```
 
 と打ち込むと、カレントディレクトリに `js` というフォルダができますので、その中に入って
@@ -44,7 +44,9 @@ export TYPST_FONT_PATHS=/usr/local/texlive/2026/texmf-dist/fonts/opentype
 
 ## What's New
 
-[2025-09-14] [h1およびh2のサイズ設定を追加](https://github.com/okumuralab/typst-js/pull/6)をマージしました。ついでにサンプルのフォント `Source Sans Pro` を `Source Sans 3` にしました。
+[2026-09-17] js 0.1.4 がTypst Universeに登録されました。
+
+[2026-09-14] [h1およびh2のサイズ設定を追加](https://github.com/okumuralab/typst-js/pull/6)をマージしました。ついでにサンプルのフォント `Source Sans Pro` を `Source Sans 3` にしました。
 
 [2025-04-20] 段組時のwidow、orphanペナルティをゼロにしました。
 
